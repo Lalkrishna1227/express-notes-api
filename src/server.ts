@@ -92,6 +92,18 @@ app.put('/notes/:id', (req: Request, res: Response) => {
   res.json(updated);
 });
 
+// Archive a note
+app.post('/notes/:id/archive', (req: Request, res: Response) => {
+  const existing = notes.get(req.params.id);
+  if (!existing) {
+    return res.status(404).json({ error: 'Note not found' });
+  }
+
+  existing.archived = true;
+  notes.set(existing.id, existing);
+  res.json(existing);
+});
+
 // Delete a note
 app.delete('/notes/:id', (req: Request, res: Response) => {
   const existed = notes.delete(req.params.id);
@@ -116,7 +128,7 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`express-notes-api listening on port ${PORT}`);
+    console.log('express-notes-api listening on port ' + PORT);
   });
 }
 
