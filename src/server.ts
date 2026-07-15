@@ -7,6 +7,7 @@ interface Note {
   content: string;
   createdAt: string;
   updatedAt: string;
+  archived?: boolean;
 }
 
 const app = express();
@@ -100,6 +101,7 @@ app.post('/notes/:id/archive', (req: Request, res: Response) => {
   }
 
   existing.archived = true;
+  existing.updatedAt = new Date().toISOString();
   notes.set(existing.id, existing);
   res.json(existing);
 });
