@@ -5,6 +5,7 @@ A small REST API built with Node.js, Express, and TypeScript for managing notes.
 ## Features
 
 - Full CRUD for notes (create, read, update, delete)
+- Archive notes without deleting them
 - In-memory data store, no database setup required
 - Basic request validation with meaningful error responses
 - Automated tests with Jest and Supertest
@@ -15,7 +16,7 @@ Node.js, Express, TypeScript, Jest, Supertest
 
 ## Getting Started
 
-```bash
+```
 npm install
 npm run dev
 ```
@@ -24,18 +25,19 @@ The API runs at http://localhost:3001.
 
 ## Endpoints
 
-| Method | Route        | Description        |
-|--------|--------------|---------------------|
-| GET    | /health      | Health check        |
-| GET    | /notes       | List all notes      |
-| GET    | /notes/:id   | Get a single note   |
-| POST   | /notes       | Create a note       |
-| PUT    | /notes/:id   | Update a note       |
-| DELETE | /notes/:id   | Delete a note       |
+| Method | Route | Description |
+| --- | --- | --- |
+| GET | /health | Health check |
+| GET | /notes | List all notes |
+| GET | /notes/:id | Get a single note |
+| POST | /notes | Create a note |
+| PUT | /notes/:id | Update a note |
+| POST | /notes/:id/archive | Archive a note |
+| DELETE | /notes/:id | Delete a note |
 
 ## Running Tests
 
-```bash
+```
 npm test
 ```
 
